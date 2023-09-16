@@ -81,3 +81,11 @@ while continue_sequence == "y":
 
     if item == 'n':
         continue_sequence = 'n'
+
+print(categorizer(item_list_to_string(lst_of_items)))
+print()
+print()
+financial_advisor(3000, 2000, lst_of_items)
+print()
+print()
+create_goal("Laptop", 2000, "2 months", lst_of_items, 3000)
