@@ -72,8 +72,30 @@ def determine_expenditure(lst_of_purchases: list):
 def create_goal(item: str, item_cost: float, time_frame: str, lst_of_purchases: list, income: str):
 
     conversation = ""
-    command = f"My income is {income}. If I want to be able to afford a ${item_cost} {item} in a time frame of {time_frame}, where could I cut my spending from my list of purchases listed as follows to be able to afford that? Please be descriptive. Can you also remake my list of purchases with reasonable spending?\n {item_list_to_string(lst_of_purchases)}"
+    command = f"My income is {income}. If I want to be able to afford a ${item_cost} {item} in a time frame of {time_frame} months, where could I cut my spending from my list of purchases listed as follows to be able to afford that? Please be descriptive. Can you also remake my list of purchases with reasonable spending?\n {item_list_to_string(lst_of_purchases)}"
     conversation += command
 
     response = generate_response(conversation)
+    print(response)
     return response
+
+lst_of_items = []
+continue_sequence = "y"
+
+while continue_sequence == "y":
+    item = input(f"Enter the items and its price (Chatime $15...Press n to exit): $")
+    print()
+    lst_of_items.append(item)
+
+    if item == 'n':
+        continue_sequence = 'n'
+
+print(categorizer(item_list_to_string(lst_of_items)))
+print()
+print()
+user_income = int(input("What is your monthly income?: $"))
+financial_advisor(user_income, 2000, lst_of_items)
+print()
+print()
+create_goal(input("You want to save up for a: "), int(input("It costs: $")), input("Within (months): "), lst_of_items, user_income)
+    # return response

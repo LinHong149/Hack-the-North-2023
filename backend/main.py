@@ -60,6 +60,7 @@ def nav3_clicked():
 
 
 
+
 # if page1:
 #     income = ctk.CTkFrame(master=root, width=390, height=250)
 #     income.place(relx=0.5+0.025, rely=0.1, anchor='n')
@@ -113,11 +114,11 @@ sidebar = ctk.CTkFrame(master=root, width=610, height=1080, border_width=1, bord
 sidebar.place(relx=0.125, rely=0.5, anchor='center')
 
 # Nav Logo
-logo = Image.open("./public/logo192.png")
-resize_logo = logo.resize((300,100))
+logo = Image.open('./assets/LogoWhite.png')
+resize_logo = logo.resize((85,50))
 img = ImageTk.PhotoImage(resize_logo)
-nav_logo = ctk.CTkButton(master=root, width=300, height=50, image=img, hover=False, text=None, command=nav1_clicked)
-nav_logo.place(relx=0.1666, rely=0.1, anchor='center')
+nav_logo = ctk.CTkButton(master=sidebar, image=img, hover=False, text=None, command=nav1_clicked, fg_color="transparent")
+nav_logo.place(relx=0.35, rely=0.13, anchor='n')
 
 # Nav Buttons
 nav_button1 = ctk.CTkButton(master=root, width=400, height=50, text="Home", command=nav1_clicked)
