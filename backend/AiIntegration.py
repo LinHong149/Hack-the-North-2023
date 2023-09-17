@@ -24,8 +24,6 @@ def generate_response(prompt):
 
 def categorizer(input_str: str):
 
-    print()
-    print()
     conversation = ""
     command = "Can you categorize these items based on whether or not they are financial wants or financial needs with names in list form? Also provide totals for each category. \n"
     conversation += command + input_str
@@ -44,6 +42,9 @@ def item_list_to_string(lst: list):
 
 
 def financial_advisor(income, expenditure, items):
+    """
+    Asks user for their income, expenditure and the items they've bought over time (by month), and then outputs advice in the form of a string
+    """
 
     conversation = ""
     command = "Assume you are a financial advisor. My monthly income is " + str(income) + " and my monthly expenditure is" + str(expenditure) + ".\n"
@@ -54,12 +55,18 @@ def financial_advisor(income, expenditure, items):
     conversation += command
 
     response = generate_response(conversation)
-    print(response)
+    return response
 
 
 def determine_expenditure(lst_of_purchases: list):
+    """Determine the total expenditure based on the purchases for the month"""
+    conversation = ""
+    command = "What is my total expenditure based on my list of purchases given below: "
+    command += item_list_to_string(lst_of_purchases)
+    conversation = command
 
-    pass
+    response = generate_response(conversation)
+    return response
 
 
 def create_goal(item: str, item_cost: float, time_frame: str, lst_of_purchases: list, income: str):
@@ -69,23 +76,4 @@ def create_goal(item: str, item_cost: float, time_frame: str, lst_of_purchases: 
     conversation += command
 
     response = generate_response(conversation)
-    print(response)
-
-
-lst_of_items = []
-continue_sequence = "y"
-
-while continue_sequence == "y":
-    item = input(f"Enter the items and its price (Chatime $15...Press n to exit): $")
-    lst_of_items.append(item)
-
-    if item == 'n':
-        continue_sequence = 'n'
-
-print(categorizer(item_list_to_string(lst_of_items)))
-print()
-print()
-financial_advisor(3000, 2000, lst_of_items)
-print()
-print()
-create_goal("Laptop", 2000, "2 months", lst_of_items, 3000)
+    return response
